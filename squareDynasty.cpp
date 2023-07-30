@@ -47,11 +47,10 @@ void introduction()
 
 
 
-//checking the columns
 
 
 
-//checking the diagonals
+//move with aswd
 
 
 void draw()
