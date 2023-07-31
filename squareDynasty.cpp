@@ -10,34 +10,11 @@ void introduction()
 {
 
 
-    cout<<"Player 1) X\n";
-    cout<<"Player 2) O\n";
+    cout<<"Player 1) A\n";
+    cout<<"Player 2) B\n";
 
-    cout<<"The 3x3 grid is shown below:\n\n";
-    cout << "_____ _____ _____  ______ _______ _______ \n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << "  1  |  2  |  3   |  4   |   5   |   6   |\n";
-    cout << "_____|_____|_____ |______|_______|_______|\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << "  7  |  8  |  9   |  10  |   11  |   12  |\n";
-    cout << "_____|_____|_____ |______|_______|_______|\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << " 13  | 14  | 15   |  16  |   17  |   18  |\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << "_____|_____|_____ |______|_______|_______|\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << " 19  | 20  | 21   |  22  |   23  |   24  |\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << "_____|_____|_____ |______|_______|_______|\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << " 25  | 26  | 21   |  28  |   29  |   30  |\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << "_____|_____|_____ |______|_______|_______|\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << " 31  | 32  | 33   |  34  |   35  |   36  |\n";
-    cout << "     |     |      |      |       |       |\n";
-    cout << "_____|_____|_____ |______|_______|_______|\n";
-    cout<<endl;
+
+    cout<<endl<<endl;
 
 }
 
@@ -50,7 +27,8 @@ void introduction()
 
 
 
-//move with aswd
+
+//actual board
 
 
 void draw()
@@ -87,7 +65,7 @@ void draw()
 }
 
 
-
+//move function for a
 int move(int mark)
 {
     int first = mark;
@@ -100,7 +78,7 @@ int move(int mark)
     return mark + 1;
 
 }
-
+//move function for s
 int moveDown(int mark)
 {
     int first = mark;
@@ -114,6 +92,7 @@ int moveDown(int mark)
 
 }
 
+//move function for w
 int moveUp(int mark)
 {
     int first = mark;
@@ -126,6 +105,8 @@ int moveUp(int mark)
     return mark - 6;
 
 }
+
+//move function for d
 
 int moveRight(int mark)
 {
@@ -147,48 +128,83 @@ int moveRight(int mark)
 
 int main(void)
 {
+    //for random function
     srand(time(0));
     board[30] = "A";
     board[5] = "B";
+    //for the character
     string initial1 = board[30];
     string initial2 = board[5];
+    //for  the current index
     int inipos1 = 30;
     int inipos2 = 5;
-    int turn,j = 0;
+    int turn = 2,j = 0;
     int c = 0;
+    string in;
+    string name;
     introduction();
     draw();
-    cout<<endl<<"HOw many turn you wanna play: ";
+    cout<<endl<<"HOw many turn you wanna play: (5 or 10): ";
     cin>>turn;
+    //checking whether the input is 5 or 10
+    while(turn != 5) {
+        while(turn != 10) {
+                if(turn != 5)
+                    break;
+            cout<<"Input wrong";
+            cout<<endl<<"HOw many turn you wanna play: (5 or 10): ";
+    cin>>turn;
+        }
+        break;
+    }
+
+    //first while loop for turn
     do
     {
+        //just comment
+        if(c != 0) {
+            cout<<endl<<endl<<endl<<"stop!!!!!!"<<endl<<endl<<endl;
+        }
 
         int ran = (rand() % (6 - 1 + 1)) + 1;
-        cout<<"Your available move = "<<ran;
         cout<<endl<<endl;
+
+
+        //for determining player 1 or 2
         if(c % 2 == 0)
         {
-            cout<<"Start player 1";
+            cout<<"Start player 1"<<endl<<endl;
+            name = "player 1";
         }
         else
         {
-            cout<<"Start player 2";
+            cout<<"Start player 2"<<endl<<endl;
+            name = "player 2";
         }
         cout<<endl<<endl;
+        cout<<name<<"'s available move according to rolling dice = "<<ran<<endl<<endl;
         j = 0;
+        //while loop for running due to the control of randomized dice number
+        if(c == 0) {
+            cin.ignore();
+        }
+
+        cout<<endl<<endl<<"Conquer(by using aswd): ";
+                getline(cin,in);
         while(j < ran)
         {
-            string in;
+
+            //It's kinda messy code,sorry 'bout that.
+            //Use if to determine player 1's turn or player 2's
             if(c % 2 == 0)
             {
 
-                if(c == 0 && j == 0)
+                /*if(c == 0 && j == 0)
                 {
                     cin.ignore();
-                }
+                }*/
 
-                cout<<"where you wanna go: ";
-                getline(cin,in);
+                //when user type 'd'
                 if(in == "d")
                 {
                     if(inipos1 != 35 && inipos1 != 29 && inipos1 != 23 && inipos1 != 17 && inipos1 != 11 && inipos1 != 5)
@@ -198,15 +214,17 @@ int main(void)
                             inipos1 = move(inipos1);
                             board[inipos1] = "A";
                             board[inipos1 - 1] = "X";
-                            draw();
+                            //draw();
                         }
+
                     }
                     else
                     {
-                        draw();
+                        //draw();
                     }
 
                 }
+                //when user type 's'
                 else if(in == "s")
                 {
                     if(inipos1 != 30 && inipos1 != 31 && inipos1 != 32 && inipos1 != 33 && inipos1 != 34 && inipos1 != 35)
@@ -216,15 +234,16 @@ int main(void)
                             inipos1 = moveDown(inipos1);
                             board[inipos1] = "A";
                             board[inipos1 - 6] = "X";
-                            draw();
+                            //draw();
                         }
                     }
                     else
                     {
-                        draw();
+                        //draw();
                     }
 
                 }
+                //when user type 'w'
                 else if(in == "w")
                 {
                     if(inipos1 != 0 && inipos1 != 1 && inipos1 != 2 && inipos1 != 3 && inipos1 != 4 && inipos1 != 5)
@@ -234,17 +253,18 @@ int main(void)
                             inipos1 = moveUp(inipos1);
                             board[inipos1] = "A";
                             board[inipos1 + 6] = "X";
-                            draw();
+                            //draw();
                         }
 
                     }
                     else
                     {
-                        draw();
+                        //draw();
                     }
 
 
                 }
+                //when user type 'a'
                 else if(in == "a")
                 {
                     if(inipos1 != 30 && inipos1 != 24 && inipos1 != 18 && inipos1 != 12 && inipos1 != 6 && inipos1 != 0)
@@ -254,20 +274,25 @@ int main(void)
                             inipos1 = moveRight(inipos1);
                             board[inipos1] = "A";
                             board[inipos1 + 1] = "X";
-                            draw();
+                            //draw();
                         }
                     }
                     else
                     {
-                        draw();
+                        //draw();
                     }
 
                 }
+                //draw();
             }
             else
             {
-                cout<<"where you wanna go: ";
-                getline(cin,in);
+                /*cout<<"where you wanna go: ";
+                getline(cin,in);*/
+
+                //It's player 2 codes.
+
+                //when user type 'd'
                 if(in == "d")
                 {
                     if(inipos2 != 35 && inipos2 != 29 && inipos2 != 23 && inipos2 != 17 && inipos2 != 11 && inipos2 != 5)
@@ -277,18 +302,19 @@ int main(void)
                             inipos2 = move(inipos2);
                             board[inipos2] = "B";
                             board[inipos2 - 1] = "O";
-                            draw();
+                            //draw();
                         }
                     }
                     else
                     {
-                        draw();
+                        //draw();
                     }
 
 
 
 
                 }
+                //when user type 's'
                 else if(in == "s")
                 {
                     if(inipos2 != 30 && inipos2 != 31 && inipos2 != 32 && inipos2 != 33 && inipos2 != 34 && inipos2 != 35)
@@ -298,15 +324,17 @@ int main(void)
                             inipos2 = moveDown(inipos2);
                             board[inipos2] = "B";
                             board[inipos2 - 6] = "O";
-                            draw();
+                            //draw();
                         }
                         else
                         {
-                            draw();
+                            //draw();
                         }
                     }
 
                 }
+
+                //when user type 'w'
                 else if(in == "w")
                 {
                     if(inipos2 != 0 && inipos2 != 1 && inipos2 != 2 && inipos1 != 3 && inipos2 != 4 && inipos2 != 5)
@@ -316,17 +344,19 @@ int main(void)
                             inipos2 = moveUp(inipos2);
                             board[inipos2] = "B";
                             board[inipos2 + 6] = "O";
-                            draw();
+                            //draw();
 
 
                         }
                         else
                         {
-                            draw();
+                            //draw();
                         }
                     }
 
                 }
+
+                //when user type 'a'
                 else if(in == "a")
                 {
                     if(inipos2 != 30 && inipos2 != 24 && inipos2 != 18 && inipos2 != 12 && inipos2 != 6 && inipos2 != 0)
@@ -336,13 +366,13 @@ int main(void)
                             inipos2 = moveRight(inipos2);
                             board[inipos2] = "B";
                             board[inipos2 + 1] = "O";
-                            draw();
+                            //draw();
                         }
 
                     }
                     else
                     {
-                        draw();
+                        //draw();
                     }
 
                 }
@@ -351,12 +381,15 @@ int main(void)
 
 
 
+
             j++;
 
 
 
         };
+        draw();
         c++;
+
     }
     while(c != turn * 2);
     int o = 0,x = 0;
@@ -371,6 +404,7 @@ int main(void)
             x++;
         }
     }
+    cout<<endl<<endl;
 
     if(o > x)
     {
@@ -386,6 +420,15 @@ int main(void)
 
     }
 
+
+
+
+
+
+    /*take_turn();
+    end_game();*/
+    return 0;
+}
 
 
 
