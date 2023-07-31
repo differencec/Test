@@ -434,7 +434,4 @@ int main(void)
 
 
 
-    /*take_turn();
-    end_game();*/
-    return 0;
-}
+    
