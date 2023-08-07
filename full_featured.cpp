@@ -590,7 +590,7 @@ int main(void)
 
                 }
 
-                //when user type 'a'
+                //when user types 'a'
                 else if(in == "a")     ///Left Boundary
                 {
                     if(inipos2 != 30 && inipos2 != 24 && inipos2 != 18 && inipos2 != 12 && inipos2 != 6 && inipos2 != 0)
@@ -703,7 +703,7 @@ int main(void)
             signal = 0;
 
 //determine for stopping protectin function
-        if(timing + 8
+        if(timing + 2
             == c) {
             for(int i = 0; i < 36; i++) {
                     if(name == "player 1") {
