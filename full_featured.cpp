@@ -3,17 +3,17 @@
 #include <time.h>
 using namespace std;
 
-string board[36] = " ";
+string board[36];
 
-//Here is teleport function;
+//Here is the teleport function;
 
 
 
 int teleport(int initipos,int c){
     int potal_1;
     int potal_2;
-    //potal is short for teleport.
-    cout<<"The initial position is "<<initipos<<endl;   //To know is it work or not can be detect.
+    //portal is short for teleport.
+    cout<<"The initial position is "<<initipos<<endl;   //To know if it works or not can be detected.
     if(initipos==7)
     {
         potal_1=7;
@@ -152,6 +152,7 @@ int main(void)
 {
     //for random function
     srand(time(0));
+    for( int i = 0; i< 36; i++){ board[i] = " ";};
     board[30] = "A";
     board[5] = "B";
     board[7]="T";
@@ -184,13 +185,13 @@ int main(void)
                 if(turn != 5)
                     break;
             cout<<"Input wrong";
-            cout<<endl<<"HOw many turn you wanna play: (5 or 10): ";
+            cout<<endl<<"HOw many turns you wanna play: (5 or 10): ";
     cin>>turn;
         }
         if(turn == 10)
             break;
         cout<<"Input wrong";
-            cout<<endl<<"HOw many turn you wanna play: (5 or 10): ";
+            cout<<endl<<"HOw many turns you wanna play: (5 or 10): ";
     cin>>turn;
     }
 
