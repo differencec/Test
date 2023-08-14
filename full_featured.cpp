@@ -40,18 +40,20 @@ int teleport(int initipos,int c){
 void introduction()
 {
 
-
-    cout<<"Player 1) A\n";
-    cout<<"Player 2) B\n";
-
-
-    cout<<endl<<endl;
+    system("cls");
 
 }
 
 ///Board Design
 void draw()
 {
+    system("cls");
+    cout<<"Player 1) A\n";
+    cout<<"Player 2) B\n";
+
+
+    cout<<endl<<endl;
+
     cout << " ______ ______ ______ ______ ______ ______ \n";
     cout << "|      |      |      |      |      |      |\n";
     cout << "|   " << board[0] << "  |   " << board[1] << "  |   " << board[2] << "  |   " <<board[3] <<"  |   " <<board[4]<<"  |   "<<board[5]<<"  |   "<< "\n";
@@ -622,9 +624,10 @@ else if(in == "a")     ///Left Boundary
         cout<<"player 1 = winner";
 
     }
+    system("pause");
     return 0;
 }
-    /*take_turn();
+
     end_game();*/
     return 0;
 }
